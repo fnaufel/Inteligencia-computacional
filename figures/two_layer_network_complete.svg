@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330">
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8Z" fill="#4a4a4a"/></marker></defs>
+<line x1="112" y1="165" x2="314" y2="60" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<line x1="112" y1="165" x2="314" y2="165" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<line x1="112" y1="165" x2="314" y2="270" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<line x1="376" y1="60" x2="684" y2="60" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="60" x2="684" y2="165" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="60" x2="684" y2="270" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="165" x2="684" y2="60" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="165" x2="684" y2="165" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="165" x2="684" y2="270" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="270" x2="684" y2="60" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="270" x2="684" y2="165" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="376" y1="270" x2="684" y2="270" stroke="#777" stroke-width="2.3" marker-end="url(#arr)"/>
+<line x1="746" y1="60" x2="1068" y2="165" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<line x1="746" y1="165" x2="1068" y2="165" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<line x1="746" y1="270" x2="1068" y2="165" stroke="#555" stroke-width="2.6" marker-end="url(#arr)"/>
+<circle cx="85" cy="165" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="85" y="175" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">x</text>
+<circle cx="345" cy="60" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="345" y="70" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h₁</text>
+<circle cx="345" cy="165" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="345" y="175" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h₂</text>
+<circle cx="345" cy="270" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="345" y="280" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h₃</text>
+<circle cx="715" cy="60" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="715" y="70" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h′₁</text>
+<circle cx="715" cy="165" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="715" y="175" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h′₂</text>
+<circle cx="715" cy="270" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="715" y="280" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">h′₃</text>
+<circle cx="1100" cy="165" r="32" fill="white" stroke="#333" stroke-width="3"/>
+<text x="1100" y="175" text-anchor="middle" font-family="serif" font-size="29" font-style="italic" fill="#222">y′</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="575" viewBox="0 0 1320 575">
+<defs><marker id="m" markerWidth="7" markerHeight="7" refX="7" refY="3" orient="auto"><path d="M0,0L7,3L0,7" fill="#8b9fa5"/></marker></defs>
+<line x1="118" y1="175" x2="342" y2="125" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="175" x2="342" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="175" x2="342" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="175" x2="342" y2="395" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="275" x2="342" y2="125" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="275" x2="342" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="275" x2="342" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="275" x2="342" y2="395" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="375" x2="342" y2="125" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="375" x2="342" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="375" x2="342" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="118" y1="375" x2="342" y2="395" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="125" x2="617" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="125" x2="617" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="215" x2="617" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="215" x2="617" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="305" x2="617" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="305" x2="617" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="395" x2="617" y2="215" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="388" y1="395" x2="617" y2="305" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="215" x2="877" y2="170" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="215" x2="877" y2="260" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="215" x2="877" y2="350" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="305" x2="877" y2="170" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="305" x2="877" y2="260" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="663" y1="305" x2="877" y2="350" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="170" x2="1132" y2="220" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="170" x2="1132" y2="310" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="260" x2="1132" y2="220" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="260" x2="1132" y2="310" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="350" x2="1132" y2="220" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<line x1="923" y1="350" x2="1132" y2="310" stroke="#9aafb4" stroke-width="1.9" marker-end="url(#m)"/>
+<circle cx="95" cy="175" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="95" y="181" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">x1</text>
+<circle cx="95" cy="275" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="95" y="281" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">x2</text>
+<circle cx="95" cy="375" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="95" y="381" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">x3</text>
+<text x="95" y="485" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#333">Input, x</text>
+<circle cx="365" cy="125" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="365" y="131" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h1</text>
+<circle cx="365" cy="215" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="365" y="221" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h2</text>
+<circle cx="365" cy="305" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="365" y="311" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h3</text>
+<circle cx="365" cy="395" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="365" y="401" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h4</text>
+<text x="365" y="485" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#333">Hidden</text>
+<text x="365" y="510" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#333">layer, h₁</text>
+<circle cx="640" cy="215" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="640" y="221" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h1</text>
+<circle cx="640" cy="305" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="640" y="311" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h2</text>
+<text x="640" y="485" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#333">Hidden</text>
+<text x="640" y="510" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#333">layer, h₂</text>
+<circle cx="900" cy="170" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="900" y="176" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h1</text>
+<circle cx="900" cy="260" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="900" y="266" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h2</text>
+<circle cx="900" cy="350" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="900" y="356" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">h3</text>
+<text x="900" y="485" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#333">Hidden</text>
+<text x="900" y="510" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#333">layer, h₃</text>
+<circle cx="1155" cy="220" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="1155" y="226" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">y1</text>
+<circle cx="1155" cy="310" r="23" stroke="#46616c" stroke-width="2.8" fill="white"/>
+<text x="1155" y="316" text-anchor="middle" font-family="serif" font-style="italic" font-size="20">y2</text>
+<text x="1155" y="485" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#333">Output, y</text>
+<text x="215" y="55" text-anchor="middle" font-family="serif" font-size="28" fill="#d8744c">β₀</text>
+<text x="500" y="55" text-anchor="middle" font-family="serif" font-size="28" fill="#d8744c">β₁</text>
+<text x="775" y="55" text-anchor="middle" font-family="serif" font-size="28" fill="#d8744c">β₂</text>
+<text x="1030" y="55" text-anchor="middle" font-family="serif" font-size="28" fill="#d8744c">β₃</text>
+</svg>

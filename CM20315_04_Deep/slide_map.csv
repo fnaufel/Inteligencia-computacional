@@ -1,0 +1,10 @@
+original_slides,reveal_slide_position,note
+1–5,1–5,Intro and original equations
+6–26,6,21-frame image r-stack
+27–37,7–17,"Folding analogy, neural architectures, composition math"
+38–41,18,4-frame image r-stack
+42–44,19–21,Hyperparameters and outline
+45–48,22,4-frame LaTeX r-stack; equation-image fallbacks unused
+49,23,Notation change #2
+50–51,24,2-frame LaTeX r-stack; equation-image fallbacks unused
+52–66,25–39,General equations and depth comparison
