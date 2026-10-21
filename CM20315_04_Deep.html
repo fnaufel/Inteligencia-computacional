@@ -141,7 +141,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">20/10/2026 19:02</p>
+  <p class="date">21/10/2026 16:12</p>
 </section>
 <section class="slide level2">
 <h2>Deep neural networks</h2>
@@ -274,6 +274,7 @@ y' &amp;= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 </section>
 <section class="slide level2 smaller">
 <h2>Combine two networks into one</h2>
+<div class="fragment">
 <p>Output of the first network is fed into the second network:</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -295,16 +296,22 @@ y' &amp;= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
 <p>Substitute the first output into the second hidden layer:</p>
 <p><span class="math display">\[
 h'_i=a\!\left[\theta'_{i0}+\theta'_{i1}\phi_0+\sum_{j=1}^{3}\theta'_{i1}\phi_jh_j\right]
 \]</span></p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Create new variables</h2>
+<div class="fragment">
 <p>Define</p>
 <p><span class="math display">\[\psi_{i0}=\theta'_{i0}+\theta'_{i1}\phi_0, \qquad
 \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3.\]</span></p>
+</div>
+<div class="fragment">
 <p>Then the hidden units of the second network become</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -313,9 +320,11 @@ h'_2&amp;=a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3]\\
 h'_3&amp;=a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 \end{aligned}
 \]</span></p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Two-layer network</h2>
+<div class="fragment">
 <p><span class="math display">\[
 \begin{aligned}
 h_1 &amp;= a[\theta_{10}+\theta_{11}x] &amp;
@@ -326,59 +335,22 @@ h_3 &amp;= a[\theta_{30}+\theta_{31}x] &amp;
 h'_3 &amp;= a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 \end{aligned}
 \]</span></p>
-<p><span class="math display">\[y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3\]</span></p>
-<p><img data-src="figures/DeepTwoLayer.svg" style="width:90.0%"></p>
-</section>
-<section class="slide level2">
-<h2>Two-layer network as one equation</h2>
 <p><span class="math display">\[
-\begin{aligned}
-h_i &amp;= a[\theta_{i0}+\theta_{i1}x], &amp; i&amp;=1,2,3,\\
-h'_i &amp;= a\!\left[\psi_{i0}+\sum_{j=1}^{3}\psi_{ij}h_j\right], &amp; i&amp;=1,2,3,\\
-y' &amp;= \phi'_0+\sum_{i=1}^{3}\phi'_i h'_i.
-\end{aligned}
+y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 \]</span></p>
-<p>Combining the layers:</p>
-<p><span class="math display">\[
-\boxed{\displaystyle
-y' = \phi'_0+\sum_{i=1}^{3}\phi'_i\,
-a\!\left[\psi_{i0}+\sum_{j=1}^{3}\psi_{ij}
-a(\theta_{j0}+\theta_{j1}x)\right]
-}
-\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
 </section>
 <section class="slide level2">
-<h2>Remember shallow network with two outputs?</h2>
-<ul>
-<li class="fragment">1 input, 4 hidden units, 2 outputs</li>
-</ul>
-<p><span class="math display">\[h_i=a[\theta_{i0}+\theta_{i1}x], \quad i=1,\ldots,4\]</span></p>
-<p><span class="math display">\[y_k=\phi_{k0}+\sum_{i=1}^{4}\phi_{ki}h_i, \quad k=1,2\]</span></p>
-<p><img data-src="figures/shallow_two_outputs.svg" style="width:93.0%"></p>
-</section>
-<section class="slide level2">
-<h2>Networks as composing functions</h2>
-<p>Consider the <em>pre-activations</em> at the second hidden units.</p>
-<p>At this point, it is a one-layer network with three outputs.</p>
-<p><span class="math display">\[
-h'_i = a\!\left[\underbrace{\psi_{i0}+\sum_{j=1}^3\psi_{ij}h_j}_{\text{pre-activation}}\right], \qquad i=1,2,3
-\]</span></p>
-<p><img data-src="figures/DeepTwoLayer.svg" style="width:90.0%"></p>
-</section>
-<section class="slide level2">
-<h2>Networks as composing functions</h2>
-<p>Consider the pre-activations at the second hidden units.</p>
-<p>At this point, it is a one-layer network with three outputs.</p>
-<p><span class="math display">\[h'_i = a\!\left[\psi_{i0}+\sum_{j=1}^3\psi_{ij}h_j\right].\]</span></p>
-<p><img data-src="figures/DeepTwoLayer.svg" style="width:90.0%"></p>
-</section>
-<section class="slide level2">
-<h2>Composing functions — graphical build-up</h2>
-<div class="r-stack">
-<p><img data-src="slide_assets/author_sequences/buildup_38.svg" class="fragment fade-in-then-out" data-fragment-index="1" width="800"></p>
-<p><img data-src="slide_assets/author_sequences/buildup_39.svg" class="fragment fade-in-then-out" data-fragment-index="2" width="800"></p>
-<p><img data-src="slide_assets/author_sequences/buildup_40.svg" class="fragment fade-in-then-out" data-fragment-index="3" width="800"></p>
-<p><img data-src="slide_assets/author_sequences/buildup_41.svg" class="fragment" data-fragment-index="4" width="800"></p>
+<h2>Computed functions</h2>
+<p><img data-src="slide_assets/author_sequences/3by3.png" class="absolute" style="top: 100px; left: 0px; width: 900px; "></p>
+<p><img data-src="figures/DeepTwoLayer.svg" class="absolute" style="top: 260px; right: -130px; width: 800px; "></p>
+<div class="fragment">
+<p><img data-src="slide_assets/author_sequences/3by3-last.png" class="absolute" style="bottom: -80px; right: 100px; width: 350px; "></p>
 </div>
 </section>
 <section class="slide level2">

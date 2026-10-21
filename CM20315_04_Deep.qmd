@@ -223,6 +223,8 @@ $$
 
 ## Combine two networks into one {.smaller}
 
+. . .
+
 Output of the first network is fed into the second network:
 
 :::: {layout-ncol=2}
@@ -251,6 +253,8 @@ $$
 
 ::::
 
+. . .
+
 Substitute the first output into the second hidden layer:
 
 $$
@@ -260,10 +264,14 @@ $$
 
 ## Create new variables
 
+. . .
+
 Define
 
 $$\psi_{i0}=\theta'_{i0}+\theta'_{i1}\phi_0, \qquad
 \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3.$$
+
+. . .
 
 Then the hidden units of the second network become
 
@@ -275,7 +283,10 @@ h'_3&=a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 \end{aligned}
 $$
 
+
 ## Two-layer network
+
+. . .
 
 $$
 \begin{aligned}
@@ -288,86 +299,24 @@ h_3 &= a[\theta_{30}+\theta_{31}x] &
 \end{aligned}
 $$
 
-$$y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3$$
-
-![](figures/DeepTwoLayer.svg){width="90%"}
-
----
-
-## Two-layer network as one equation
-
 $$
-\begin{aligned}
-h_i &= a[\theta_{i0}+\theta_{i1}x], & i&=1,2,3,\\
-h'_i &= a\!\left[\psi_{i0}+\sum_{j=1}^{3}\psi_{ij}h_j\right], & i&=1,2,3,\\
-y' &= \phi'_0+\sum_{i=1}^{3}\phi'_i h'_i.
-\end{aligned}
+y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 $$
 
-Combining the layers:
+![](figures/DeepTwoLayer.svg){width="90%" fig-align="center"}
 
-$$
-\boxed{\displaystyle
- y' = \phi'_0+\sum_{i=1}^{3}\phi'_i\,
- a\!\left[\psi_{i0}+\sum_{j=1}^{3}\psi_{ij}
- a(\theta_{j0}+\theta_{j1}x)\right]
-}
-$$
 
----
+## Computed functions
 
-## Remember shallow network with two outputs?
 
-- 1 input, 4 hidden units, 2 outputs
+![](slide_assets/author_sequences/3by3.png){.absolute top=100 left=0 width=900}
 
-$$h_i=a[\theta_{i0}+\theta_{i1}x], \quad i=1,\ldots,4$$
+![](figures/DeepTwoLayer.svg){.absolute top=260 right=-130 width=800}
 
-$$y_k=\phi_{k0}+\sum_{i=1}^{4}\phi_{ki}h_i, \quad k=1,2$$
+. . .
 
-![](figures/shallow_two_outputs.svg){width="93%"}
+![](slide_assets/author_sequences/3by3-last.png){.absolute bottom=-80 right=100 width=350}
 
----
-
-## Networks as composing functions
-
-Consider the *pre-activations* at the second hidden units.
-
-At this point, it is a one-layer network with three outputs.
-
-$$
- h'_i = a\!\left[\underbrace{\psi_{i0}+\sum_{j=1}^3\psi_{ij}h_j}_{\text{pre-activation}}\right], \qquad i=1,2,3
-$$
-
-![](figures/DeepTwoLayer.svg){width="90%"}
-
----
-
-## Networks as composing functions
-
-Consider the pre-activations at the second hidden units.
-
-At this point, it is a one-layer network with three outputs.
-
-$$h'_i = a\!\left[\psi_{i0}+\sum_{j=1}^3\psi_{ij}h_j\right].$$
-
-![](figures/DeepTwoLayer.svg){width="90%"}
-
----
-
-## Composing functions — graphical build-up
-
-::: {.r-stack}
-![](slide_assets/author_sequences/buildup_38.svg){.fragment .fade-in-then-out data-fragment-index="1" width=800}
-
-![](slide_assets/author_sequences/buildup_39.svg){.fragment .fade-in-then-out data-fragment-index="2" width=800}
-
-![](slide_assets/author_sequences/buildup_40.svg){.fragment .fade-in-then-out data-fragment-index="3" width=800}
-
-![](slide_assets/author_sequences/buildup_41.svg){.fragment data-fragment-index="4" width=800}
-
-:::
-
----
 
 ## Deep neural networks
 
