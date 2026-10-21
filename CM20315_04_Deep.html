@@ -141,7 +141,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">21/10/2026 16:12</p>
+  <p class="date">21/10/2026 17:54</p>
 </section>
 <section class="slide level2">
 <h2>Deep neural networks</h2>
@@ -356,11 +356,11 @@ y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <section class="slide level2">
 <h2>Deep neural networks</h2>
 <ul>
-<li class="fragment">Composing two networks</li>
-<li class="fragment">Combining the two networks into one</li>
-<li class="fragment"><strong>Hyperparameters</strong></li>
-<li class="fragment">Notation change and general case</li>
-<li class="fragment">Shallow vs.&nbsp;deep networks</li>
+<li>Composing two networks</li>
+<li>Combining the two networks into one</li>
+<li><mark>Hyperparameters</mark></li>
+<li>Notation change and general case</li>
+<li>Shallow vs.&nbsp;deep networks</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -375,92 +375,155 @@ y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <section class="slide level2">
 <h2>Deep neural networks</h2>
 <ul>
-<li class="fragment">Composing two networks</li>
-<li class="fragment">Combining the two networks into one</li>
-<li class="fragment">Hyperparameters</li>
-<li class="fragment"><strong>Notation change and general case</strong></li>
-<li class="fragment">Shallow vs.&nbsp;deep networks</li>
+<li>Composing two networks</li>
+<li>Combining the two networks into one</li>
+<li>Hyperparameters</li>
+<li><mark>Notation change and general case</mark></li>
+<li>Shallow vs.&nbsp;deep networks</li>
 </ul>
 </section>
-<section class="slide level2">
-<h2>Notation change #1 — building matrix notation</h2>
-<div class="r-stack">
-<div class="fragment fade-in-then-out" data-fragment-index="1">
-<p><span class="math display">\[
-\begin{aligned}
-h_i &amp;= a[\theta_{i0}+\theta_{i1}x],\quad i=1,2,3\\
-h'_i &amp;= a[\psi_{i0}+\psi_{i1}h_1+\psi_{i2}h_2+\psi_{i3}h_3],\quad i=1,2,3\\
-y' &amp;= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
-\end{aligned}
-\]</span></p>
+<section class="slide level2 smaller">
+<h2>Notation change: matrix notation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
 </div>
-<div class="fragment fade-in-then-out" data-fragment-index="2">
-<p><span class="math display">\[
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}\)</span></p>
+</div><div class="column fragment">
+<p><span class="math inline">\(\quad\iff\quad
 \begin{bmatrix}h_1\\h_2\\h_3\end{bmatrix}
 =a\!\left[\begin{bmatrix}\theta_{10}\\\theta_{20}\\\theta_{30}\end{bmatrix}
-+\begin{bmatrix}\theta_{11}\\\theta_{21}\\\theta_{31}\end{bmatrix}x\right]
-\]</span></p>
-<p><span class="math display">\[h'_i=a\!\left[\psi_{i0}+\sum_{j=1}^3\psi_{ij}h_j\right],\quad i=1,2,3\]</span></p>
-<p><span class="math display">\[y'=\phi'_0+\sum_{i=1}^3\phi'_ih'_i\]</span></p>
-</div>
-<div class="fragment fade-in-then-out" data-fragment-index="3">
-<p><span class="math display">\[\begin{aligned}
-\mathbf h &amp;= a[\boldsymbol\theta_0+\boldsymbol\theta x]\\[3mm]
++\begin{bmatrix}\theta_{11}\\\theta_{21}\\\theta_{31}\end{bmatrix}x\right]\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}\)</span></p>
+</div><div class="column fragment">
+<p><span class="math inline">\(\quad\iff\quad
 \begin{bmatrix}h'_1\\h'_2\\h'_3\end{bmatrix}
-&amp;= a\!\left[
+= a\!\left[
 \begin{bmatrix}\psi_{10}\\\psi_{20}\\\psi_{30}\end{bmatrix}
 +\begin{bmatrix}\psi_{11}&amp;\psi_{12}&amp;\psi_{13}\\\psi_{21}&amp;\psi_{22}&amp;\psi_{23}\\\psi_{31}&amp;\psi_{32}&amp;\psi_{33}\end{bmatrix}
-\mathbf h\right]
-\end{aligned}\]</span></p>
-<p><span class="math display">\[y'=\phi'_0+\sum_{i=1}^3\phi'_ih'_i\]</span></p>
-</div>
-<div class="fragment" data-fragment-index="4">
-<p><span class="math display">\[\begin{aligned}
-\mathbf h &amp;= a[\boldsymbol\theta_0+\boldsymbol\theta x]\\[3mm]
-\mathbf h' &amp;= a[\boldsymbol\psi_0+\boldsymbol\Psi\mathbf h]\\[3mm]
-y' &amp;= \phi'_0+\begin{bmatrix}\phi'_1&amp;\phi'_2&amp;\phi'_3\end{bmatrix}
-\begin{bmatrix}h'_1\\h'_2\\h'_3\end{bmatrix}
-\end{aligned}\]</span></p>
-</div>
-</div>
+\begin{bmatrix}h_1\\h_2\\h_3\end{bmatrix} \right]\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}\)</span></p>
+</div><div class="column fragment">
+<p><span class="math inline">\(\quad\iff\quad
+y' = \phi'_0+ \begin{bmatrix}\phi'_1&amp;\phi'_2&amp;\phi'_3\end{bmatrix}
+\begin{bmatrix}h'_1\\h'_2\\h'_3\end{bmatrix}\)</span></p>
+</div></div>
 </section>
-<section class="slide level2">
-<h2>Notation change #2</h2>
-<p>Introduce vectors and matrices:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf h &amp;= a[\boldsymbol\theta_0+\boldsymbol\theta x]\\[2mm]
-\mathbf h' &amp;= a[\boldsymbol\psi_0+\boldsymbol\Psi\mathbf h]\\[2mm]
-y' &amp;= \phi'_0+\boldsymbol\phi'\mathbf h'
-\end{aligned}
-\]</span></p>
+<section class="slide level2 smaller">
+<h2>Notation change: matrix notation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h = a[\boldsymbol\theta_0+\boldsymbol\theta x]
+\end{array}\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h' = a[\boldsymbol\psi_0+\boldsymbol\Psi\mathbf h]
+\end{array}\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad y' = \phi'_0+\boldsymbol\phi'\mathbf h'
+\end{array}\)</span></p>
+</div></div>
 </section>
-<section class="slide level2">
-<h2>Notation change #3 — layer indexing</h2>
-<div class="r-stack">
-<div class="fragment fade-in-then-out" data-fragment-index="1">
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf h_1 &amp;= \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]\\
-\mathbf h_2 &amp;= \mathbf a[\boldsymbol\beta_1+\boldsymbol\Omega_1\mathbf h_1]\\
-\mathbf y &amp;= \boldsymbol\beta_2+\boldsymbol\Omega_2\mathbf h_2
-\end{aligned}
-\]</span></p>
+<section class="slide level2 smaller">
+<h2>Notation change: matrix notation, with indices</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
 </div>
-<div class="fragment" data-fragment-index="2">
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf h_1 &amp;= a[\underbrace{\boldsymbol\beta_0}_{\text{bias vector}}+
-\underbrace{\boldsymbol\Omega_0}_{\text{weight matrix}}\mathbf x]\\
-\mathbf h_2 &amp;= \mathbf a[\boldsymbol\beta_1+\boldsymbol\Omega_1\mathbf h_1]\\
-\mathbf y &amp;= \boldsymbol\beta_2+\boldsymbol\Omega_2\mathbf h_2
-\end{aligned}
-\]</span></p>
-</div>
-</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h_1 = \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]
+\end{array}\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h_2 = \mathbf a[\boldsymbol\beta_1+\boldsymbol\Omega_1\mathbf h_1]
+\end{array}\)</span></p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}\)</span></p>
+</div><div class="column">
+<p><span class="math inline">\(\begin{array}{l}
+\\
+\quad\iff\quad \mathbf y = \boldsymbol\beta_2+\boldsymbol\Omega_2\mathbf h_2
+\end{array}\)</span></p>
+</div></div>
 </section>
 <section class="slide level2">
 <h2>General equations for deep network</h2>
+<h3>(with <span class="math inline">\(K\)</span> hidden layers)</h3>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf h_1 &amp;= \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]\\
@@ -471,20 +534,23 @@ y' &amp;= \phi'_0+\boldsymbol\phi'\mathbf h'
 \mathbf y &amp;= \boldsymbol\beta_K+\boldsymbol\Omega_K\mathbf h_K
 \end{aligned}
 \]</span></p>
-<p>Equivalently, the network computes a composition of affine transformations and activations.</p>
 </section>
 <section class="slide level2">
 <h2>Example</h2>
-<p><img data-src="figures/DeepKLayer.svg" style="width:94.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepKLayer.svg" class="quarto-figure quarto-figure-center" style="width:94.0%"></p>
+</figure>
+</div>
 </section>
 <section class="slide level2">
 <h2>Deep neural networks</h2>
 <ul>
-<li class="fragment">Composing two networks</li>
-<li class="fragment">Combining the two networks into one</li>
-<li class="fragment">Hyperparameters</li>
-<li class="fragment">Notation change and general case</li>
-<li class="fragment"><strong>Shallow vs.&nbsp;deep networks</strong></li>
+<li>Composing two networks</li>
+<li>Combining the two networks into one</li>
+<li>Hyperparameters</li>
+<li>Notation change and general case</li>
+<li><mark>Shallow vs.&nbsp;deep networks</mark></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -500,47 +566,24 @@ y' &amp;= \phi'_0+\boldsymbol\phi'\mathbf h'
 <li class="fragment">Generative models</li>
 <li class="fragment">Reinforcement learning</li>
 </ul></li>
+<li class="fragment">All use deep networks. But why?</li>
 </ul>
-<p>All use deep networks. But why?</p>
 </section>
 <section class="slide level2">
 <h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>1. Ability to approximate different functions?</strong></p>
-<p>Both obey the <strong>universal approximation theorem</strong>.</p>
-<p>Argument: One layer is enough, and for deep networks we could arrange for the other layers to compute the identity function.</p>
+<ul>
+<li class="fragment">Both obey the <strong>universal approximation theorem</strong>.</li>
+<li class="fragment">Argument: one layer is enough, and for deep networks we could arrange for the other layers to compute the identity function.</li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>2. Number of linear regions per parameter</strong></p>
-</section>
-<section class="slide level2">
-<h2>Number of linear regions per parameter</h2>
-<p><img data-src="figures/linear_regions_Di1.svg" style="width:65.0%"></p>
-<ul>
-<li class="fragment">5 layers</li>
-<li class="fragment">10 hidden units per layer</li>
-<li class="fragment">471 parameters</li>
-<li class="fragment">161,501 linear regions</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Number of linear regions per parameter</h2>
 <p><img data-src="figures/linear_regions_Di1.svg" style="width:48.0%"> <img data-src="figures/linear_regions_Di10.svg" style="width:48.0%"></p>
 <ul>
 <li class="fragment"><strong>5 layers; 10 hidden units per layer:</strong> 471 parameters, 161,501 linear regions</li>
 <li class="fragment"><strong>5 layers; 50 hidden units per layer:</strong> 10,801 parameters, over <span class="math inline">\(10^{40}\)</span> linear regions</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Shallow vs.&nbsp;deep networks</h2>
-<p><strong>2. Number of linear regions per parameter</strong></p>
-<ul>
-<li class="fragment">Deep networks create many more regions per parameter.</li>
-<li class="fragment">But there are dependencies between them:
-<ul>
-<li class="fragment">Think of folding example.</li>
-<li class="fragment">Perhaps similar symmetries in real-world functions? <strong>Unknown.</strong></li>
-</ul></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -591,9 +634,8 @@ y' &amp;= \phi'_0+\boldsymbol\phi'\mathbf h'
 <li class="fragment">Then we need to test them.</li>
 </ul>
 </section>
-<section class="slide level2">
-<h2>Feedback</h2>
-<p><img data-src="figures/slide_66_figure_01.png" style="width:35.0%"></p>
+<section class="title-slide slide level1 center">
+<h1>The End</h1>
 
 </section>
     </div>
