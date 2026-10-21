@@ -1,7 +1,7 @@
 ---
 title: Deep Neural Networks
 subtitle: (Chapter 4 of *Understanding Deep Learning*, by Prof. Simon Prince)
-#author:
+author: Fernando Náufel
 date: now
 date-modified: now
 date-format: "DD/MM/YYYY HH:mm"
@@ -98,7 +98,8 @@ link-citations: true
 
 :::
 
-## Composing two networks {.smaller}
+
+## Composing two networks
 
 . . .
 
@@ -137,7 +138,7 @@ $$
 
 ::: {.r-stack}
 
-![](slide_assets/author_sequences/composition_07.svg){.fragment .fade-in-then-out data-fragment-index="2" width=800}
+![](slide_assets/author_sequences/composition_07.svg){width=800}
 
 ![](slide_assets/author_sequences/composition_08.svg){.fragment .fade-in-then-out data-fragment-index="3" width=800}
 
@@ -263,8 +264,6 @@ $$
 
 
 ## Create new variables
-
-. . .
 
 Define
 
@@ -640,7 +639,7 @@ The best results are created by deep networks with many layers.
 - **5 layers; 50 hidden units per layer:** 10,801 parameters, over $10^{40}$ linear regions
 
 
-## Shallow vs. Deep Networks
+## Shallow vs. deep networks
 
 **3. Depth efficiency**
 
@@ -650,7 +649,7 @@ The best results are created by deep networks with many layers.
 
 ---
 
-## Shallow vs. Deep Networks
+## Shallow vs. deep networks
 
 **4. Large structured networks**
 
@@ -662,7 +661,7 @@ The best results are created by deep networks with many layers.
 
 ---
 
-## Shallow vs. Deep Networks
+## Shallow vs. deep networks
 
 **5. Fitting and generalization**
 
@@ -672,7 +671,7 @@ The best results are created by deep networks with many layers.
 
 ---
 
-## Shallow vs. Deep Networks
+## Shallow vs. deep networks
 
 **5. Fitting and generalization**
 

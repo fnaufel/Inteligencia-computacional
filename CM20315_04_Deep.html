@@ -9,6 +9,7 @@
 <link href="CM20315_04_Deep_files/libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.35">
 
+  <meta name="author" content="Fernando Náufel">
   <title>Deep Neural Networks</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -139,9 +140,14 @@
   <p class="subtitle">(Chapter 4 of <em>Understanding Deep Learning</em>, by Prof.&nbsp;Simon Prince)</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Fernando Náufel 
+</div>
+</div>
 </div>
 
-  <p class="date">21/10/2026 17:54</p>
+  <p class="date">21/10/2026 18:05</p>
 </section>
 <section class="slide level2">
 <h2>Deep neural networks</h2>
@@ -160,7 +166,7 @@
 <li>Shallow vs.&nbsp;deep networks</li>
 </ul>
 </section>
-<section class="slide level2 smaller">
+<section class="slide level2">
 <h2>Composing two networks</h2>
 <div class="fragment">
 <div class="quarto-layout-panel" data-layout-ncol="2">
@@ -201,7 +207,7 @@ y' &amp;= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <section class="slide level2">
 <h2>Composing two networks</h2>
 <div class="r-stack">
-<p><img data-src="slide_assets/author_sequences/composition_07.svg" class="fragment fade-in-then-out" data-fragment-index="2" width="800"></p>
+<p><img data-src="slide_assets/author_sequences/composition_07.svg" width="800"></p>
 <p><img data-src="slide_assets/author_sequences/composition_08.svg" class="fragment fade-in-then-out" data-fragment-index="3" width="800"></p>
 <p><img data-src="slide_assets/author_sequences/composition_09.svg" class="fragment fade-in-then-out" data-fragment-index="4" width="800"></p>
 <p><img data-src="slide_assets/author_sequences/composition_10.svg" class="fragment fade-in-then-out" data-fragment-index="5" width="800"></p>
@@ -306,11 +312,9 @@ h'_i=a\!\left[\theta'_{i0}+\theta'_{i1}\phi_0+\sum_{j=1}^{3}\theta'_{i1}\phi_jh_
 </section>
 <section class="slide level2">
 <h2>Create new variables</h2>
-<div class="fragment">
 <p>Define</p>
 <p><span class="math display">\[\psi_{i0}=\theta'_{i0}+\theta'_{i1}\phi_0, \qquad
 \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3.\]</span></p>
-</div>
 <div class="fragment">
 <p>Then the hidden units of the second network become</p>
 <p><span class="math display">\[
@@ -587,7 +591,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 </ul>
 </section>
 <section class="slide level2">
-<h2>Shallow vs.&nbsp;Deep Networks</h2>
+<h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>3. Depth efficiency</strong></p>
 <ul>
 <li class="fragment">There are some functions that require a shallow network with <strong>exponentially more hidden units</strong> than a deep network to achieve an equivalent approximation.</li>
@@ -596,7 +600,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 </ul>
 </section>
 <section class="slide level2">
-<h2>Shallow vs.&nbsp;Deep Networks</h2>
+<h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>4. Large structured networks</strong></p>
 <ul>
 <li class="fragment">Think about images as input — might be 1M pixels.</li>
@@ -607,7 +611,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 </ul>
 </section>
 <section class="slide level2">
-<h2>Shallow vs.&nbsp;Deep Networks</h2>
+<h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>5. Fitting and generalization</strong></p>
 <ul>
 <li class="fragment">Fitting of deep models seems to be easier up to about 20 layers.</li>
@@ -616,7 +620,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 </ul>
 </section>
 <section class="slide level2">
-<h2>Shallow vs.&nbsp;Deep Networks</h2>
+<h2>Shallow vs.&nbsp;deep networks</h2>
 <p><strong>5. Fitting and generalization</strong></p>
 <p>Fitting of deep models is also <strong>faster</strong>.</p>
 <p><img data-src="figures/slide_64_figure_01.png" style="width:93.0%"></p>
