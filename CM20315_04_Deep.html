@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.9.35">
 
   <meta name="author" content="Fernando Náufel">
-  <title>Deep Neural Networks</title>
+  <title>Chapter 4: Deep Neural Networks</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="CM20315_04_Deep_files/libs/revealjs/dist/theme/quarto-351ac353b8c8582c47f06275cea384af.css">
+  <link rel="stylesheet" href="CM20315_04_Deep_files/libs/revealjs/dist/theme/quarto-917afc54bb014f7e11d47d15810dffc2.css">
   <link rel="stylesheet" href="custom.css">
   <link href="CM20315_04_Deep_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="CM20315_04_Deep_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -136,8 +136,8 @@
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">Deep Neural Networks</h1>
-  <p class="subtitle">(Chapter 4 of <em>Understanding Deep Learning</em>, by Prof.&nbsp;Simon Prince)</p>
+  <h1 class="title">Chapter 4: Deep Neural Networks</h1>
+  <p class="subtitle">Based on material available at <a href="https://udlbook.github.io/udlbook/" class="uri">https://udlbook.github.io/udlbook/</a>, by Prof.&nbsp;Simon Prince</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -147,13 +147,13 @@ Fernando Náufel
 </div>
 </div>
 
-  <p class="date">21/10/2026 18:05</p>
+  <p class="date">22/10/2026</p>
 </section>
 <section class="slide level2">
 <h2>Deep neural networks</h2>
 <ul>
 <li class="fragment">Networks with more than one hidden layer</li>
-<li class="fragment">Intuition becomes more difficult</li>
+<li class="fragment">Intuition becomes a little more difficult</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -237,6 +237,9 @@ y' &amp;= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <p><img data-src="figures/DeepFold.svg" class="quarto-figure quarto-figure-center" style="width:93.0%"></p>
 </figure>
 </div>
+<div class="r-stack">
+<p><a href="https://udlbook.github.io/udlfigures/">Play with interactive figure.</a></p>
+</div>
 </div>
 </section>
 <section class="slide level2 smaller">
@@ -282,26 +285,28 @@ y' &amp;= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <h2>Combine two networks into one</h2>
 <div class="fragment">
 <p>Output of the first network is fed into the second network:</p>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div id="c1" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="figures/deep_composed_network_author.svg" style="width:100.0%"></p>
+</div><div class="column" style="width:25%;">
 <p><span class="math display">\[
 \begin{aligned}
-h_i &amp;= a[\theta_{i0}+\theta_{i1}x], &amp;&amp; i=1,2,3\\
+h_1 &amp;= a[\theta_{10}+\theta_{11}x]\\
+h_2 &amp;= a[\theta_{20}+\theta_{21}x]\\
+h_3 &amp;= a[\theta_{30}+\theta_{31}x]\\
 y &amp;= \phi_0+\sum_{j=1}^{3}\phi_j h_j\\
 \end{aligned}
 \]</span></p>
-</div>
-<div id="c2" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+</div><div class="column" style="width:25%;">
 <p><span class="math display">\[
 \begin{aligned}
-h'_i &amp;= a[\theta'_{i0}+\theta'_{i1}y], &amp;&amp; i=1,2,3\\
+h'_1 &amp;= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &amp;= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &amp;= a[\theta'_{30}+\theta'_{31}y]\\
 y' &amp;= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
 \end{aligned}
 \]</span></p>
-</div>
-</div>
-</div>
+</div></div>
 </div>
 <div class="fragment">
 <p>Substitute the first output into the second hidden layer:</p>
@@ -310,12 +315,23 @@ h'_i=a\!\left[\theta'_{i0}+\theta'_{i1}\phi_0+\sum_{j=1}^{3}\theta'_{i1}\phi_jh_
 \]</span></p>
 </div>
 </section>
-<section class="slide level2">
+<section class="slide level2 smaller">
 <h2>Create new variables</h2>
-<p>Define</p>
-<p><span class="math display">\[\psi_{i0}=\theta'_{i0}+\theta'_{i1}\phi_0, \qquad
-\psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3.\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/deep_composed_network_author.svg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<p>In <span class="math inline">\(\qquad\begin{cases}
+h'_1 &amp;= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &amp;= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &amp;= a[\theta'_{30}+\theta'_{31}y]\\
+y' &amp;= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
+\end{cases}\qquad\)</span> define <span class="math inline">\(\qquad\psi_{10}=\theta'_{i0}+\theta'_{i1}\phi_0,\qquad \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3\)</span></p>
 <div class="fragment">
+<div style="height:50px">
+
+</div>
 <p>Then the hidden units of the second network become</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -329,6 +345,11 @@ h'_3&amp;=a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 <section class="slide level2">
 <h2>Two-layer network</h2>
 <div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
 <p><span class="math display">\[
 \begin{aligned}
 h_1 &amp;= a[\theta_{10}+\theta_{11}x] &amp;
@@ -342,18 +363,13 @@ h'_3 &amp;= a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 <p><span class="math display">\[
 y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 \]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/DeepTwoLayer.svg" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
-</figure>
-</div>
 </div>
 </section>
 <section class="slide level2">
 <h2>Computed functions</h2>
+<div class="fragment">
 <p><img data-src="slide_assets/author_sequences/3by3.png" class="absolute" style="top: 100px; left: 0px; width: 900px; "></p>
 <p><img data-src="figures/DeepTwoLayer.svg" class="absolute" style="top: 260px; right: -130px; width: 800px; "></p>
-<div class="fragment">
 <p><img data-src="slide_assets/author_sequences/3by3-last.png" class="absolute" style="bottom: -80px; right: 100px; width: 350px; "></p>
 </div>
 </section>
@@ -370,10 +386,11 @@ y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 <section class="slide level2">
 <h2>Hyperparameters</h2>
 <ul>
-<li class="fragment"><p><span class="math inline">\(K\)</span> layers = <strong>depth</strong> of network</p></li>
-<li class="fragment"><p><span class="math inline">\(D_k\)</span> hidden units per layer = <strong>width</strong> of network</p></li>
-<li class="fragment"><p>These are called <strong>hyperparameters</strong> — chosen before training the network.</p></li>
-<li class="fragment"><p>Can try retraining with different hyperparameters: <strong>hyperparameter optimization</strong> or <strong>hyperparameter search</strong>.</p></li>
+<li class="fragment"><span class="math inline">\(K\)</span> layers = <strong>depth</strong> of network</li>
+<li class="fragment"><span class="math inline">\(D_k\)</span> hidden units in layer <span class="math inline">\(k, \quad 1 \leq k \leq K\)</span>.</li>
+<li class="fragment">Not all layers need to have the same number of units.</li>
+<li class="fragment">These are called <strong>hyperparameters</strong> — chosen before training the network.</li>
+<li class="fragment">Can try retraining with different hyperparameters: <strong>hyperparameter optimization</strong> or <strong>hyperparameter search</strong>.</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -527,7 +544,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 </section>
 <section class="slide level2">
 <h2>General equations for deep network</h2>
-<h3>(with <span class="math inline">\(K\)</span> hidden layers)</h3>
+<h3>(with <em>K</em> hidden layers)</h3>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf h_1 &amp;= \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]\\
@@ -570,7 +587,7 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 <li class="fragment">Generative models</li>
 <li class="fragment">Reinforcement learning</li>
 </ul></li>
-<li class="fragment">All use deep networks. But why?</li>
+<li class="fragment">All use deep networks.</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -636,6 +653,15 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
 <li class="fragment">How to do this in particular for deep networks</li>
 </ul></li>
 <li class="fragment">Then we need to test them.</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>But before that</h2>
+<ul>
+<li>Notebook 4.1 - Composing networks: <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_1_Composing_Networks.ipynb">ipynb/colab</a></li>
+<li>Notebook 4.2 - Clipping functions: <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_2_Clipping_functions.ipynb">ipynb/colab</a></li>
+<li>Notebook 4.3 - Deep networks: <a href="https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_3_Deep_Networks.ipynb">ipynb/colab</a></li>
+<li>Problems for Chapter 4 <a href="https://udlbook.github.io/udlbook/">(see book)</a></li>
 </ul>
 </section>
 <section class="title-slide slide level1 center">
@@ -951,8 +977,6 @@ y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
                 if (link.getAttribute("rel") === null) {
                   link.setAttribute("rel", "noopener");
                 }
-                // default icon
-                link.classList.add("external");
             }
           }
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

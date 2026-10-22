@@ -1,10 +1,10 @@
 ---
-title: Deep Neural Networks
-subtitle: (Chapter 4 of *Understanding Deep Learning*, by Prof. Simon Prince)
+title: "Chapter 4: Deep Neural Networks"
+subtitle: Based on material available at <https://udlbook.github.io/udlbook/>, by Prof. Simon Prince
 author: Fernando Náufel
 date: now
 date-modified: now
-date-format: "DD/MM/YYYY HH:mm"
+date-format: "DD/MM/YYYY"
 
 execute:
   echo: true
@@ -48,7 +48,7 @@ format:
     code-copy: true
     code-link: true
     fig-align: center
-    link-external-icon: true
+    link-external-icon: false
     link-external-newwindow: true
     link-external-filter: ^(?:http:|https:)\/\/fnaufel\.github\.io
     # Se ativar embed-resources, desativar chalkboard:
@@ -83,7 +83,7 @@ link-citations: true
 ## Deep neural networks
 
 - Networks with more than one hidden layer
-- Intuition becomes more difficult
+- Intuition becomes a little more difficult
 
 
 ## Deep neural networks
@@ -187,6 +187,12 @@ $$
 
 ![](figures/DeepFold.svg){width="93%"  fig-align="center"}
 
+:::{.r-stack}
+
+[Play with interactive figure.](https://udlbook.github.io/udlfigures/)
+
+:::
+
 
 ## Comparing to shallow with six hidden units {.smaller}
 
@@ -228,24 +234,34 @@ $$
 
 Output of the first network is fed into the second network:
 
-:::: {layout-ncol=2}
+:::: {.columns}
 
-:::{#c1}
+:::{.column width="50%"}
+
+![](figures/deep_composed_network_author.svg){width="100%"}
+
+:::
+
+:::{.column width="25%"}
 
 $$
 \begin{aligned}
-h_i &= a[\theta_{i0}+\theta_{i1}x], && i=1,2,3\\
+h_1 &= a[\theta_{10}+\theta_{11}x]\\
+h_2 &= a[\theta_{20}+\theta_{21}x]\\
+h_3 &= a[\theta_{30}+\theta_{31}x]\\
 y &= \phi_0+\sum_{j=1}^{3}\phi_j h_j\\
 \end{aligned}
 $$
 
 :::
 
-:::{#c2}
+:::{.column width="25%"}
 
 $$
 \begin{aligned}
-h'_i &= a[\theta'_{i0}+\theta'_{i1}y], && i=1,2,3\\
+h'_1 &= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &= a[\theta'_{30}+\theta'_{31}y]\\
 y' &= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
 \end{aligned}
 $$
@@ -263,14 +279,21 @@ h'_i=a\!\left[\theta'_{i0}+\theta'_{i1}\phi_0+\sum_{j=1}^{3}\theta'_{i1}\phi_jh_
 $$
 
 
-## Create new variables
+## Create new variables {.smaller}
 
-Define
+![](figures/deep_composed_network_author.svg){width="50%" fig-align="center"}
 
-$$\psi_{i0}=\theta'_{i0}+\theta'_{i1}\phi_0, \qquad
-\psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3.$$
+In $\qquad\begin{cases}
+h'_1 &= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &= a[\theta'_{30}+\theta'_{31}y]\\
+y' &= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
+\end{cases}\qquad$ define
+$\qquad\psi_{10}=\theta'_{i0}+\theta'_{i1}\phi_0,\qquad \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3$
 
 . . .
+
+<div style="height:50px"></div>
 
 Then the hidden units of the second network become
 
@@ -287,6 +310,9 @@ $$
 
 . . .
 
+![](figures/DeepTwoLayer.svg){width="90%" fig-align="center"}
+
+
 $$
 \begin{aligned}
 h_1 &= a[\theta_{10}+\theta_{11}x] &
@@ -302,17 +328,14 @@ $$
 y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
 $$
 
-![](figures/DeepTwoLayer.svg){width="90%" fig-align="center"}
-
 
 ## Computed functions
 
+. . .
 
 ![](slide_assets/author_sequences/3by3.png){.absolute top=100 left=0 width=900}
 
 ![](figures/DeepTwoLayer.svg){.absolute top=260 right=-130 width=800}
-
-. . .
 
 ![](slide_assets/author_sequences/3by3-last.png){.absolute bottom=-80 right=100 width=350}
 
@@ -333,8 +356,8 @@ $$
 ## Hyperparameters
 
 - $K$ layers = **depth** of network
-- $D_k$ hidden units per layer = **width** of network
-
+- $D_k$ hidden units in layer $k, \quad 1 \leq k \leq K$.
+- Not all layers need to have the same number of units.
 - These are called **hyperparameters** — chosen before training the network.
 - Can try retraining with different hyperparameters: **hyperparameter optimization** or **hyperparameter search**.
 
@@ -574,7 +597,7 @@ $\begin{array}{l}
 
 ## General equations for deep network
 
-### (with $K$ hidden layers)
+### (with *K* hidden layers)
 
 $$
 \begin{aligned}
@@ -617,7 +640,7 @@ The best results are created by deep networks with many layers.
     - Graph neural networks
     - Generative models
     - Reinforcement learning
-- All use deep networks. But why?
+- All use deep networks.
 
 
 ## Shallow vs. deep networks
@@ -689,5 +712,18 @@ Fitting of deep models is also **faster**.
     - How to find minima of the loss function
     - How to do this in particular for deep networks
 - Then we need to test them.
+
+
+## But before that
+
+:::{.nonincremental}
+
+- Notebook 4.1 - Composing networks: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_1_Composing_Networks.ipynb)
+- Notebook 4.2 - Clipping functions: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_2_Clipping_functions.ipynb)
+- Notebook 4.3 - Deep networks: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_3_Deep_Networks.ipynb)
+- Problems for Chapter 4 [(see book)](https://udlbook.github.io/udlbook/)
+
+:::
+
 
 # The End
