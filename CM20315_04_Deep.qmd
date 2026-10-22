@@ -52,10 +52,10 @@ format:
     link-external-newwindow: true
     link-external-filter: ^(?:http:|https:)\/\/fnaufel\.github\.io
     # Se ativar embed-resources, desativar chalkboard:
-    # embed-resources: true
-    chalkboard:
-      theme: whiteboard
-      buttons: false
+    embed-resources: true
+    # chalkboard:
+    #   theme: whiteboard
+    #   buttons: false
     include-in-header:
       text: |
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -409,7 +409,7 @@ $\quad\iff\quad
 $\begin{cases}
 h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
 h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
-h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+h'_3 = a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
 \end{cases}$
 
 :::
