@@ -1,0 +1,664 @@
+---
+title: "Chapter 4: Deep Neural Networks"
+subtitle: Based on material available at <https://udlbook.github.io/udlbook/>, by Prof. Simon Prince
+author: Fernando Náufel
+date: now
+date-modified: now
+date-format: "DD/MM/YYYY"
+
+execute:
+  echo: true
+  eval: true
+  warning: true
+  error: true
+  include: true
+
+---
+
+## Deep neural networks
+
+- Networks with more than one hidden layer
+- Intuition becomes a little more difficult
+
+
+## Deep neural networks
+
+:::{.nonincremental}
+
+- [Composing two networks]{.mark}
+- Combining the two networks into one
+- Hyperparameters
+- Notation change and general case
+- Shallow vs. deep networks
+
+:::
+
+
+## Composing two networks
+
+. . .
+
+:::: {layout-ncol=2}
+
+### Network 1
+
+$$
+\begin{aligned}
+h_1 &= a[\theta_{10}+\theta_{11}x]\\
+h_2 &= a[\theta_{20}+\theta_{21}x]\\
+h_3 &= a[\theta_{30}+\theta_{31}x]\\[2mm]
+y &= \phi_0+\phi_1h_1+\phi_2h_2+\phi_3h_3
+\end{aligned}
+$$
+
+### Network 2
+
+$$
+\begin{aligned}
+h'_1 &= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &= a[\theta'_{30}+\theta'_{31}y]\\[2mm]
+y' &= \phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
+\end{aligned}
+$$
+
+::::
+
+. . .
+
+![](assets/figures/deep_composed_network_author.svg){width="78%" fig-align="center"}
+
+
+## Composing two networks
+
+::: {.r-stack}
+
+![](assets/sequences/composition_07.svg){width=800}
+
+![](assets/sequences/composition_08.svg){.fragment .fade-in-then-out data-fragment-index="3" width=800}
+
+![](assets/sequences/composition_09.svg){.fragment .fade-in-then-out data-fragment-index="4" width=800}
+
+![](assets/sequences/composition_10.svg){.fragment .fade-in-then-out data-fragment-index="5" width=800}
+
+![](assets/sequences/composition_11.svg){.fragment .fade-in-then-out data-fragment-index="6" width=800}
+
+![](assets/sequences/composition_12.svg){.fragment .fade-in-then-out data-fragment-index="7" width=800}
+
+![](assets/sequences/composition_13.svg){.fragment .fade-in-then-out data-fragment-index="8" width=800}
+
+![](assets/sequences/composition_14.svg){.fragment .fade-in-then-out data-fragment-index="9" width=800}
+
+![](assets/sequences/composition_15.svg){.fragment .fade-in-then-out data-fragment-index="10" width=800}
+
+![](assets/sequences/composition_16.svg){.fragment .fade-in-then-out data-fragment-index="11" width=800}
+
+![](assets/sequences/composition_17.svg){.fragment .fade-in-then-out data-fragment-index="12" width=800}
+
+![](assets/sequences/composition_18.svg){.fragment .fade-in-then-out data-fragment-index="13" width=800}
+
+![](assets/sequences/composition_19.svg){.fragment .fade-in-then-out data-fragment-index="14" width=800}
+
+![](assets/sequences/composition_20.svg){.fragment .fade-in-then-out data-fragment-index="15" width=800}
+
+![](assets/sequences/composition_21.svg){.fragment .fade-in-then-out data-fragment-index="16" width=800}
+
+![](assets/sequences/composition_22.svg){.fragment .fade-in-then-out data-fragment-index="17" width=800}
+
+![](assets/sequences/composition_23.svg){.fragment .fade-in-then-out data-fragment-index="18" width=800}
+
+![](assets/sequences/composition_24.svg){.fragment .fade-in-then-out data-fragment-index="19" width=800}
+
+![](assets/sequences/composition_25.svg){.fragment .fade-in-then-out data-fragment-index="20" width=800}
+
+![](assets/sequences/composition_26.svg){.fragment data-fragment-index="21" width=800}
+
+:::
+
+
+## “Folding analogy”
+
+. . .
+
+![](assets/book-svg-originals/DeepFold.svg){width="93%"  fig-align="center"}
+
+:::{.r-stack}
+
+[Play with interactive figure.](https://udlbook.github.io/udlfigures/)
+
+:::
+
+
+## Comparing to shallow with six hidden units {.smaller}
+
+. . .
+
+**Deep architecture** — 20 parameters; at least 9 regions.
+
+![](assets/figures/deep_composed_network_author.svg){width="62%" fig-align="center"}
+
+. . .
+
+**Shallow architecture** — 19 parameters; maximum 7 regions.
+
+![](assets/figures/shallow_six_hidden.svg){width="60%" fig-align="center"}
+
+
+## Composing networks in 2D
+
+. . .
+
+![](assets/figures/DeepTwoLayer2D.png){width="80%" fig-align="center"}
+
+
+## Deep neural networks
+
+:::{.nonincremental}
+
+- Composing two networks
+- [Combining the two networks into one]{.mark}
+- Hyperparameters
+- Notation change and general case
+- Shallow vs. deep networks
+
+:::
+
+## Combine two networks into one {.smaller}
+
+. . .
+
+Output of the first network is fed into the second network:
+
+:::: {.columns}
+
+:::{.column width="50%"}
+
+![](assets/figures/deep_composed_network_author.svg){width="100%"}
+
+:::
+
+:::{.column width="25%"}
+
+$$
+\begin{aligned}
+h_1 &= a[\theta_{10}+\theta_{11}x]\\
+h_2 &= a[\theta_{20}+\theta_{21}x]\\
+h_3 &= a[\theta_{30}+\theta_{31}x]\\
+y &= \phi_0+\sum_{j=1}^{3}\phi_j h_j\\
+\end{aligned}
+$$
+
+:::
+
+:::{.column width="25%"}
+
+$$
+\begin{aligned}
+h'_1 &= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &= a[\theta'_{30}+\theta'_{31}y]\\
+y' &= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
+\end{aligned}
+$$
+
+:::
+
+::::
+
+. . .
+
+Substitute the first output into the second hidden layer:
+
+$$
+h'_i=a\!\left[\theta'_{i0}+\theta'_{i1}\phi_0+\sum_{j=1}^{3}\theta'_{i1}\phi_jh_j\right]
+$$
+
+
+## Create new variables {.smaller}
+
+![](assets/figures/deep_composed_network_author.svg){width="50%" fig-align="center"}
+
+In $\qquad\begin{cases}
+h'_1 &= a[\theta'_{10}+\theta'_{11}y]\\
+h'_2 &= a[\theta'_{20}+\theta'_{21}y]\\
+h'_3 &= a[\theta'_{30}+\theta'_{31}y]\\
+y' &= \phi'_0+\sum_{j=1}^{3}\phi'_j h'_j
+\end{cases}\qquad$ define
+$\qquad\psi_{10}=\theta'_{i0}+\theta'_{i1}\phi_0,\qquad \psi_{ij}=\theta'_{i1}\phi_j,\quad i,j=1,2,3$
+
+. . .
+
+<div style="height:50px"></div>
+
+Then the hidden units of the second network become
+
+$$
+\begin{aligned}
+h'_1&=a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3]\\
+h'_2&=a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3]\\
+h'_3&=a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
+\end{aligned}
+$$
+
+
+## Two-layer network
+
+. . .
+
+![](assets/book-svg-originals/DeepTwoLayer.svg){width="90%" fig-align="center"}
+
+
+$$
+\begin{aligned}
+h_1 &= a[\theta_{10}+\theta_{11}x] &
+ h'_1 &= a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3]\\
+h_2 &= a[\theta_{20}+\theta_{21}x] &
+ h'_2 &= a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3]\\
+h_3 &= a[\theta_{30}+\theta_{31}x] &
+ h'_3 &= a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
+\end{aligned}
+$$
+
+$$
+y'=\phi'_0+\phi'_1h'_1+\phi'_2h'_2+\phi'_3h'_3
+$$
+
+
+## Computed functions
+
+. . .
+
+![](assets/sequences/3by3.png){.absolute top=100 left=0 width=900}
+
+![](assets/book-svg-originals/DeepTwoLayer.svg){.absolute top=260 right=-130 width=800}
+
+![](assets/sequences/3by3-last.png){.absolute bottom=-80 right=100 width=350}
+
+
+## Deep neural networks
+
+:::{.nonincremental}
+
+- Composing two networks
+- Combining the two networks into one
+- [Hyperparameters]{.mark}
+- Notation change and general case
+- Shallow vs. deep networks
+
+:::
+
+
+## Hyperparameters
+
+- $K$ layers = **depth** of network
+- $D_k$ hidden units in layer $k, \quad 1 \leq k \leq K$.
+- Not all layers need to have the same number of units.
+- These are called **hyperparameters** — chosen before training the network.
+- Can try retraining with different hyperparameters: **hyperparameter optimization** or **hyperparameter search**.
+
+
+## Deep neural networks
+
+:::{.nonincremental}
+
+- Composing two networks
+- Combining the two networks into one
+- Hyperparameters
+- [Notation change and general case]{.mark}
+- Shallow vs. deep networks
+
+:::
+
+
+## Notation change: matrix notation {.smaller}
+
+![](assets/book-svg-originals/DeepTwoLayer.svg){width=800 fig-align="center"}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}$
+
+:::
+
+::: {.column .fragment}
+
+$\quad\iff\quad
+\begin{bmatrix}h_1\\h_2\\h_3\end{bmatrix}
+=a\!\left[\begin{bmatrix}\theta_{10}\\\theta_{20}\\\theta_{30}\end{bmatrix}
++\begin{bmatrix}\theta_{11}\\\theta_{21}\\\theta_{31}\end{bmatrix}x\right]$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column .fragment width="40%"}
+
+$\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_1+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}$
+
+:::
+
+::: {.column .fragment}
+
+$\quad\iff\quad
+\begin{bmatrix}h'_1\\h'_2\\h'_3\end{bmatrix}
+= a\!\left[
+\begin{bmatrix}\psi_{10}\\\psi_{20}\\\psi_{30}\end{bmatrix}
++\begin{bmatrix}\psi_{11}&\psi_{12}&\psi_{13}\\\psi_{21}&\psi_{22}&\psi_{23}\\\psi_{31}&\psi_{32}&\psi_{33}\end{bmatrix}
+\begin{bmatrix}h_1\\h_2\\h_3\end{bmatrix} \right]$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column .fragment width="40%"}
+
+$\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}$
+
+:::
+
+::: {.column .fragment}
+
+$\quad\iff\quad
+y' = \phi'_0+ \begin{bmatrix}\phi'_1&\phi'_2&\phi'_3\end{bmatrix}
+\begin{bmatrix}h'_1\\h'_2\\h'_3\end{bmatrix}$
+
+:::
+
+::::
+
+
+## Notation change: matrix notation {.smaller}
+
+![](assets/book-svg-originals/DeepTwoLayer.svg){width=800 fig-align="center"}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h = a[\boldsymbol\theta_0+\boldsymbol\theta x]
+\end{array}$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h' = a[\boldsymbol\psi_0+\boldsymbol\Psi\mathbf h]
+\end{array}$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad y' = \phi'_0+\boldsymbol\phi'\mathbf h'
+\end{array}$
+
+:::
+
+::::
+
+
+## Notation change: matrix notation, with indices {.smaller}
+
+![](assets/book-svg-originals/DeepTwoLayer.svg){width=800 fig-align="center"}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{cases}
+h_1 = a[\theta_{10}+\theta_{11}x] \\
+h_2 = a[\theta_{20}+\theta_{21}x] \\
+h_3 = a[\theta_{30}+\theta_{31}x]
+\end{cases}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h_1 = \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]
+\end{array}$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{cases}
+h'_1 = a[\psi_{10}+\psi_{11}h_1+\psi_{12}h_2+\psi_{13}h_3] \\
+h'_2 = a[\psi_{20}+\psi_{21}h_1+\psi_{22}h_2+\psi_{23}h_3] \\
+h'_3 = a[\psi_{30}+\psi_{31}h_2+\psi_{32}h_2+\psi_{33}h_3]
+\end{cases}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad \mathbf h_2 = \mathbf a[\boldsymbol\beta_1+\boldsymbol\Omega_1\mathbf h_1]
+\end{array}$
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$\begin{array}{l}
+\\
+y'=\phi'_0 + \phi'_1h'_1 + \phi'_2h'_2 + \phi'_3h'_3
+\end{array}$
+
+:::
+
+::: {.column}
+
+$\begin{array}{l}
+\\
+\quad\iff\quad \mathbf y = \boldsymbol\beta_2+\boldsymbol\Omega_2\mathbf h_2
+\end{array}$
+
+:::
+
+::::
+
+
+## General equations for deep network
+
+### (with *K* hidden layers)
+
+$$
+\begin{aligned}
+\mathbf h_1 &= \mathbf a[\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf x]\\
+\mathbf h_2 &= \mathbf a[\boldsymbol\beta_1+\boldsymbol\Omega_1\mathbf h_1]\\
+\mathbf h_3 &= \mathbf a[\boldsymbol\beta_2+\boldsymbol\Omega_2\mathbf h_2]\\
+&\,\vdots\\
+\mathbf h_K &= \mathbf a[\boldsymbol\beta_{K-1}+\boldsymbol\Omega_{K-1}\mathbf h_{K-1}]\\
+\mathbf y &= \boldsymbol\beta_K+\boldsymbol\Omega_K\mathbf h_K
+\end{aligned}
+$$
+
+
+## Example
+
+![](assets/book-svg-originals/DeepKLayer.svg){width="94%" fig-align="center"}
+
+
+## Deep neural networks
+
+:::{.nonincremental}
+
+- Composing two networks
+- Combining the two networks into one
+- Hyperparameters
+- Notation change and general case
+- [Shallow vs. deep networks]{.mark}
+
+:::
+
+
+## Shallow vs. deep networks
+
+The best results are created by deep networks with many layers.
+
+- 50–1000 layers for most applications
+- Best results in:
+    - Computer vision
+    - Natural language processing
+    - Graph neural networks
+    - Generative models
+    - Reinforcement learning
+- All use deep networks.
+
+
+## Shallow vs. deep networks
+
+**1. Ability to approximate different functions?**
+
+- Both obey the **universal approximation theorem**.
+- Argument: one layer is enough, and for deep networks we could arrange for the other layers to compute the identity function.
+
+
+## Shallow vs. deep networks
+
+**2. Number of linear regions per parameter**
+
+
+![](assets/figures/linear_regions_Di1.svg){width="48%"} ![](assets/figures/linear_regions_Di10.svg){width="48%"}
+
+- **5 layers; 10 hidden units per layer:** 471 parameters, 161,501 linear regions
+- **5 layers; 50 hidden units per layer:** 10,801 parameters, over $10^{40}$ linear regions
+
+
+## Shallow vs. deep networks
+
+**3. Depth efficiency**
+
+- There are some functions that require a shallow network with **exponentially more hidden units** than a deep network to achieve an equivalent approximation.
+- This is known as the **depth efficiency** of deep networks.
+- But do the real-world functions we want to approximate have this property? **Unknown.**
+
+---
+
+## Shallow vs. deep networks
+
+**4. Large structured networks**
+
+- Think about images as input — might be 1M pixels.
+- Fully connected networks are not practical.
+- Answer is to have weights that only operate locally, and share across image.
+- This leads to **convolutional networks**.
+- Gradually integrate information from across the image — needs multiple layers.
+
+---
+
+## Shallow vs. deep networks
+
+**5. Fitting and generalization**
+
+- Fitting of deep models seems to be easier up to about 20 layers.
+- Then needs various tricks to train deeper networks, so (in vanilla form), fitting becomes harder.
+- Generalization is good in deep networks. Why?
+
+---
+
+## Shallow vs. deep networks
+
+**5. Fitting and generalization**
+
+Fitting of deep models is also **faster**.
+
+![](assets/figures/slide_64_figure_01.png){width="93%"}
+
+---
+
+## Where are we going?
+
+- We have defined families of very flexible networks that map multiple inputs to multiple outputs.
+- Now we need to train them:
+    - How to choose loss functions
+    - How to find minima of the loss function
+    - How to do this in particular for deep networks
+- Then we need to test them.
+
+
+## But before that
+
+:::{.nonincremental}
+
+- Notebook 4.1 - Composing networks: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_1_Composing_Networks.ipynb)
+- Notebook 4.2 - Clipping functions: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_2_Clipping_functions.ipynb)
+- Notebook 4.3 - Deep networks: [ipynb/colab](https://github.com/udlbook/udlbook/blob/main/Notebooks/Chap04/4_3_Deep_Networks.ipynb)
+- Problems for Chapter 4 [(see book)](https://udlbook.github.io/udlbook/)
+
+:::
+
+
+# The End

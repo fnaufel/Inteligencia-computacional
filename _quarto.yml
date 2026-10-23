@@ -1,5 +1,66 @@
 project:
-  title: ???
+  type: default
+  title: Understanding Deep Learning presentations
+  render:
+    - chapters/*/slides.qmd
+  resources:
+    - chapters/04-deep-networks/assets/book-svg-originals/LICENSE.txt
+  output-dir: _output
 
+format:
+  revealjs:
+    theme:
+      - simple
+      - shared/theme/custom.scss
+    css: shared/theme/custom.css
+    width: 1600
+    height: 800
+    lang: pt
+    hash: true
+    hash-type: number
+    hash-one-based-index: true
+    fragment-in-url: true
+    incremental: true
+    auto-stretch: false
+    menu:
+      numbers: true
+    slide-number: true
+    center: false
+    center-title-slide: true
+    preview-links: auto
+    progress: true
+    history: false
+    touch: true
+    keyboard: true
+    mouse-wheel: false
+    hide-inactive-cursor: true
+    hide-cursor-time: 100
+    controls: auto
+    pause: true
+    help: true
+    cap-location: bottom
+    code-copy: true
+    code-link: true
+    fig-align: center
+    link-external-icon: false
+    link-external-newwindow: true
+    link-external-filter: ^(?:http:|https:)\/\/fnaufel\.github\.io
+    embed-resources: false
+    chalkboard:
+      theme: whiteboard
+      buttons: false
+    include-in-header:
+      text: |
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    include-after-body:
+      text: |
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    pointer:
+      alwaysVisible: false
+      pointerSize: 20
 
+revealjs-plugins:
+  - pointer
+  - attribution
 
+link-citations: true
